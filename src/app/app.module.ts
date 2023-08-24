@@ -10,6 +10,7 @@ import { SearchtableComponent } from './searchtable/searchtable.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AddTableComponent } from './add-table/add-table.component';
 
 const myRouter: Routes = [
   {
@@ -20,6 +21,10 @@ const myRouter: Routes = [
     path: 'searchTable',
     component: SearchtableComponent,
   },
+  {
+    path:'addTable',
+    component:AddTableComponent
+  }
 ];
 @NgModule({
   declarations: [
@@ -27,6 +32,7 @@ const myRouter: Routes = [
     SearchtableComponent,
     NavbarComponent,
     HomeComponent,
+    AddTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ export class SearchtableComponent implements OnInit {
   display = 'd-none';
   data: any;
   p: number = 1;
+  deleteDeatils:any;
 
   reactiveForm: FormGroup;
   checkboxOptions = [
@@ -66,6 +67,21 @@ export class SearchtableComponent implements OnInit {
           }
         );
     }
+  }
+
+  deleteId(deleteId){
+    this.deleteDeatils=deleteId
+  }
+
+  DeleteTable(id:any){
+    this.api.deleteTable(id).subscribe((response:any)=>{
+      this.deleteDeatils='';
+      console.log(response.value)
+      if(response.value="Deleted"){
+        alert("Table Deleted Successfully")
+        window.location.href="/"
+      }
+    })
   }
 
   ngOnInit(): void {}

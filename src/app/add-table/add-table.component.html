@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="row" >
+        <form [formGroup]="addTableForm" >
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              name=""
+              id="name"
+              class="form-control"
+              formControlName="Name"
+            />
+            <div
+              *ngIf="
+                addTableForm.get('Name').invalid &&
+                (addTableForm.get('Name').dirty ||
+                  addTableForm.get('Name').touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="addTableForm.get('Name').errors">Name is required.</div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <label for="name" class="form-label">Type</label><br />
+            <label>
+              <input type="radio" formControlName="Type" value="Coverage" />
+              Coverage
+            </label>
+            <label>
+              <input type="radio" formControlName="Type" value="Form" />
+              Form
+            </label>
+            <label>
+              <input type="radio" formControlName="Type" value="Policy" />
+              Policy
+            </label>
+            <label>
+              <input type="radio" formControlName="Type" value="Risk" />
+              Risk
+            </label>
+            <label>
+              <input type="radio" formControlName="Type" value="Schedule" />
+              Schedule
+            </label>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <label for="Description" class="form-label">Description</label>
+            <textarea
+              name="Description"
+              id="Description"
+              class="form-control"
+              formControlName="Description"
+            ></textarea>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <label for="Comment" class="form-label">Comment</label>
+            <textarea
+              name="Comment"
+              id="Comment"
+              class="form-control"
+              formControlName="Comment"
+            ></textarea>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 d-inlex-inline">
+            <label for="preminum" class="form-label">Override Premium</label>
+            <input
+              type="checkbox"
+              name="preminum"
+              id="preminum"
+              formControlName="preminum"
+              class="mx-1 my-2"
+            />
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <input
+              type="submit"
+              class="btn btn-primary form-control"
+              (click)="submitForm()"
+              value="Submit"
+              [disabled]="addTableForm.invalid"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

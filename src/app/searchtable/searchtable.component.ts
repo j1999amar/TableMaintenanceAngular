@@ -16,7 +16,7 @@ export class SearchtableComponent implements OnInit {
   display = 'd-none';
   data: any;
   p: number = 1;
-  deleteDeatils:any;
+  deleteDeatils: any;
 
   reactiveForm: FormGroup;
   checkboxOptions = [
@@ -61,7 +61,7 @@ export class SearchtableComponent implements OnInit {
             (this.data = response), (this.display = 'd-block');
           },
           (error) => {
-            alert(error.error);
+            alert("Table Not Found");
             this.reactiveForm.reset();
             window.location.href = '/searchTable';
           }
@@ -69,20 +69,24 @@ export class SearchtableComponent implements OnInit {
     }
   }
 
-  deleteId(deleteId){
-    this.deleteDeatils=deleteId
+  deleteId(deleteId) {
+    this.deleteDeatils = deleteId
   }
 
-  DeleteTable(id:any){
-    this.api.deleteTable(id).subscribe((response:any)=>{
-      this.deleteDeatils='';
+  DeleteTable(id: any) {
+    this.api.deleteTable(id).subscribe((response: any) => {
+      this.deleteDeatils = '';
       console.log(response.value)
-      if(response.value="Deleted"){
+      if (response.value = "Deleted") {
         alert("Table Deleted Successfully")
-        window.location.href="/"
+        window.location.href = "/"
       }
     })
   }
 
-  ngOnInit(): void {}
+  shareTable(data: any) {
+    this.api.sharedData = data
+  }
+
+  ngOnInit(): void { }
 }

@@ -11,6 +11,7 @@ export class ApiService {
 
 
   }
+  sharedData: any;
 
   getSearchTable(tableName: string, typeList: string[]) {
     console.log(typeList)
@@ -26,13 +27,21 @@ export class ApiService {
     return this.http.get('https://localhost:7248/TableMaintenance/SearchTable', options);
   }
 
-  addTable(data:any){
-    return this.http.post('https://localhost:7248/TableMaintenance/AddTable',data)
+  addTable(data: any) {
+    return this.http.post('https://localhost:7248/TableMaintenance/AddTable', data)
   }
 
-  deleteTable(data:any){
+  deleteTable(data: any) {
     return this.http.delete(`https://localhost:7248/TableMaintenance/deleteTable/${data}`)
   }
+  shareTable(data: any) {
+    this.sharedData = data
+  }
+  EditTable(data: any) {
+    return this.http.put('https://localhost:7248/TableMaintenance/EditTable', data)
+  }
+
+
 
 
 

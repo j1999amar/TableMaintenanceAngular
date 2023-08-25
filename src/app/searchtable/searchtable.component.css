@@ -6,3 +6,5 @@ input[type="radio"]{
     margin-left: 5px;
     margin-top: 5px;
 }
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: red;}

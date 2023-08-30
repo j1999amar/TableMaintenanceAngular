@@ -14,28 +14,37 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="name" class="form-label">Type</label><br />
+          <label for="type" class="form-label">Type</label><br />
           <label>
-            <input type="radio" formControlName="Type" value="Coverage" />
+            <input type="radio" id="coverage" formControlName="Type" value="Coverage" [checked]="addTableForm.get('Type').value === 'Coverage'" (click)="onRadioClick($event)" />
             Coverage
           </label>
           <label>
-            <input type="radio" formControlName="Type" value="Form" />
+            <input type="radio" id="form" formControlName="Type" value="Form" [checked]="addTableForm.get('Type').value === 'Form'" (click)="onRadioClick($event)" />
             Form
           </label>
           <label>
-            <input type="radio" formControlName="Type" value="Policy" />
+            <input type="radio" id="policy" formControlName="Type" value="Policy" [checked]="addTableForm.get('Type').value === 'Policy'" (click)="onRadioClick($event)" />
             Policy
           </label>
           <label>
-            <input type="radio" formControlName="Type" value="Risk" />
+            <input type="radio" id="risk" formControlName="Type" value="Risk" [checked]="addTableForm.get('Type').value === 'Risk'" (click)="onRadioClick($event)" />
             Risk
           </label>
           <label>
-            <input type="radio" formControlName="Type" value="Schedule" />
+            <input type="radio" id="schedule" formControlName="Type" value="Schedule" [checked]="addTableForm.get('Type').value === 'Schedule'" (click)="onRadioClick($event)" />
             Schedule
           </label>
+
+          <div *ngIf="
+          addTableForm.get('Type').invalid &&
+          (addTableForm.get('Type').dirty ||
+            addTableForm.get('Type').touched)
+        " class="text-danger">
+        <div *ngIf="addTableForm.get('Type').errors">Type is required.</div>
+      </div>
         </div>
+        
         <div class="col-sm-12 col-md-12 col-lg-6">
           <label for="Description" class="form-label">Description</label>
           <textarea name="Description" id="Description" class="form-control" formControlName="Description"></textarea>
@@ -45,8 +54,8 @@
           <textarea name="Comment" id="Comment" class="form-control" formControlName="Comment"></textarea>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6 d-inlex-inline">
-          <label for="preminum" class="form-label">Override Premium</label>
-          <input type="checkbox" name="preminum" id="preminum" formControlName="preminum" class="mx-1 my-2" />
+          <label for="premium" class="form-label">Override Premium</label>
+          <input type="checkbox" name="premium" id="premium" formControlName="premium" class="mx-1 my-2" />
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
           <input type="submit" class="btn btn-primary form-control" (click)="submitForm()" value="Submit"

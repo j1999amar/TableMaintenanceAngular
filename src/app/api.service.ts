@@ -39,7 +39,7 @@ export class ApiService {
   shareTable(data: any) {
     this.sharedData = data
   }
-  EditTable(data: any) {
+  EditTable(data: TableData) {
     return this.http.put('https://localhost:7248/TableMaintenance/EditTable', data)
   }
 

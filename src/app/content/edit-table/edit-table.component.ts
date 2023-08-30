@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TableData } from '../model/TableData';
 
 @Component({
   selector: 'app-edit-table',
@@ -9,13 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EditTableComponent {
   table: any;
+  tableData:TableData=new TableData;
 
 
   addTableForm: FormGroup;
   constructor(private fb: FormBuilder, private api: ApiService) {
     const table: any = this.api.sharedData;
 
-    console.log(table)
 
     this.addTableForm = this.fb.group({
       Id: [table.id],
@@ -28,9 +29,9 @@ export class EditTableComponent {
   }
 
   submitForm() {
-    console.log(this.addTableForm.value)
     if (this.addTableForm.valid) {
-      this.api.EditTable(this.addTableForm.value).subscribe((response: any) => {
+      this.tableData=this.addTableForm.value
+      this.api.EditTable(this.tableData).subscribe((response: any) => {
         if (response.id != '') {
           alert('Table Updated')
           window.location.href = '/'

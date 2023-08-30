@@ -3,6 +3,6 @@ export class TableData {
     Type: string;
     Description: string;
     Comment: string;
-    premium: string;
+    premium: number;
   }
   

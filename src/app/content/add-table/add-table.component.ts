@@ -34,12 +34,18 @@ export class AddTableComponent {
   submitForm() {
     if (this.addTableForm.valid) {
       console.log(this.addTableForm.value)
+      if(this.addTableForm.value.premium=true){
+        this.addTableForm.value.premium=1
+      }else{
+        this.addTableForm.value.premium=0
+      }
       this.tableData=this.addTableForm.value;
+
       this.api.addTable(this.tableData).subscribe((response: any) => {
         console.log(response)
         if (response.id != "") {
           alert("Table is added")
-          // window.location.href = '/'
+          window.location.href = '/'
         } else {
           alert("Table is not added")
 

@@ -6,13 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { SearchtableComponent } from './searchtable/searchtable.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
+import { SearchtableComponent } from './content/searchtable/searchtable.component';
+import { NavbarComponent } from './header/navbar/navbar.component';
+import { HomeComponent } from './content/home/home.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { AddTableComponent } from './add-table/add-table.component';
-import { EditTableComponent } from './edit-table/edit-table.component';
-import { ViewTableComponent } from './view-table/view-table.component';
+import { AddTableComponent } from './content/add-table/add-table.component';
+import { EditTableComponent } from './content/edit-table/edit-table.component';
+import { ViewTableComponent } from './content/view-table/view-table.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ContentComponent } from './content/content.component';
 
 const myRouter: Routes = [
   {
@@ -45,6 +48,9 @@ const myRouter: Routes = [
     AddTableComponent,
     EditTableComponent,
     ViewTableComponent,
+    HeaderComponent,
+    FooterComponent,
+    ContentComponent,
   ],
   imports: [
     BrowserModule,

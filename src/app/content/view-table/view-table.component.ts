@@ -10,7 +10,6 @@ export class ViewTableComponent {
   table: any;
   constructor(private api: ApiService) {
     this.table = api.sharedData
-    console.log(this.table)
   }
 
 }

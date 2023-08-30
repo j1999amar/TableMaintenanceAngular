@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ApiService } from '../../api.service';
+import { TableData } from '../model/TableData';
 
 @Component({
   selector: 'app-searchtable',
@@ -57,13 +58,15 @@ export class SearchtableComponent implements OnInit {
       this.api
         .getSearchTable(this.reactiveForm.value.tableName, selectedCheckboxes)
         .subscribe(
-          (response) => {
+          response => {
             (this.data = response), (this.display = 'd-block');
           },
-          (error) => {
-            alert("Table Not Found");
+          error => {
+            let errorMessage=''
+            errorMessage = 'An error occurred: ' + error.error;
+            alert(errorMessage);
             this.reactiveForm.reset();
-            window.location.href = '/searchTable';
+            // window.location.href = '/searchTable';
           }
         );
     }
@@ -76,15 +79,19 @@ export class SearchtableComponent implements OnInit {
   DeleteTable(id: any) {
     this.api.deleteTable(id).subscribe((response: any) => {
       this.deleteDeatils = '';
-      console.log(response.value)
       if (response.value = "Deleted") {
         alert("Table Deleted Successfully")
         window.location.href = "/"
       }
+    }, error => {
+      let errorMessage=''
+      errorMessage = 'An error occurred: ' + error.error;
+      alert(errorMessage);
+      window.location.href = '/searchTable';
     })
   }
 
-  shareTable(data: any) {
+  shareTable(data: TableData) {
     this.api.sharedData = data
   }
 

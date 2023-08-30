@@ -33,7 +33,6 @@ export class AddTableComponent {
   }
   submitForm() {
     if (this.addTableForm.valid) {
-      console.log(this.addTableForm.value)
 
       if(this.addTableForm.value.premium){
         this.tableData=this.addTableForm.value;
@@ -43,7 +42,6 @@ export class AddTableComponent {
         this.tableData.premium=0;
       }
       this.api.addTable(this.tableData).subscribe((response: any) => {
-        console.log(response)
         if (response.id != "") {
           alert("Table is added")
           window.location.href = '/'

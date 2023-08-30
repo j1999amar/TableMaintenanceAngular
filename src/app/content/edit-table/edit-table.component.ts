@@ -10,7 +10,7 @@ import { TableData } from '../model/TableData';
 })
 export class EditTableComponent {
   table: any;
-  tableData:TableData=new TableData;
+  tableData: TableData = new TableData;
 
 
   addTableForm: FormGroup;
@@ -24,23 +24,40 @@ export class EditTableComponent {
       Type: [table.type, Validators.required],
       Description: [table.description],
       Comment: [table.comment, Validators.maxLength(2408)],
-      preminum: [table.preminum]
+      premium: [table.premium]
     })
+  }
+  onRadioClick(event: Event) {
+    const selectedValue = (event.target as HTMLInputElement).value;
+    const currentType = this.addTableForm.get('Type').value;
+
+    if (selectedValue === currentType) {
+      this.addTableForm.get('Type').setValue('');
+    } else {
+      this.addTableForm.get('Type').setValue(selectedValue);
+    }
   }
 
   submitForm() {
     if (this.addTableForm.valid) {
-      this.tableData=this.addTableForm.value
+      console.log(this.addTableForm.value)
+
+      if(this.addTableForm.value.premium){
+        this.tableData=this.addTableForm.value;
+        this.tableData.premium=1;
+      }else{
+        this.tableData=this.addTableForm.value;
+        this.tableData.premium=0;
+      }
       this.api.EditTable(this.tableData).subscribe((response: any) => {
-        if (response.id != '') {
-          alert('Table Updated')
+        console.log(response)
+        if (response.id != "") {
+          alert("Table is updated")
           window.location.href = '/'
         } else {
-          alert('Table is not updated')
+          alert("Table is not updated")
+
         }
-
-
-
       })
     }
   }

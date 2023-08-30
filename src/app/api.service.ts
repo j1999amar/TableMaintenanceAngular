@@ -16,20 +16,19 @@ export class ApiService {
 
   getSearchTable(tableName: string, typeList: string[]) {
     console.log(typeList)
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
+    // const headers = new HttpHeaders()
+    //   .set('Content-Type', 'application/json')
+    //   .set('Access-Control-Allow-Origin', '*');
     let params = new HttpParams()
       .set('tableName', tableName)
     for (let i = 0; i < typeList.length; i++) {
       params = params.append('typeList', typeList[i])
     }
-    const options = { headers, params };
+    const options = {  params };
     return this.http.get('https://localhost:7248/TableMaintenance/SearchTable', options);
   }
 
   addTable(data:TableData) {
-    console.log(data)
     return this.http.post('https://localhost:7248/TableMaintenance/AddTable', data)
   }
 

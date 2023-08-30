@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, ObservableInput } from 'rxjs';
+import { TableData } from './content/model/TableData';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,8 @@ export class ApiService {
     return this.http.get('https://localhost:7248/TableMaintenance/SearchTable', options);
   }
 
-  addTable(data: any) {
+  addTable(data:TableData) {
+    console.log(data)
     return this.http.post('https://localhost:7248/TableMaintenance/AddTable', data)
   }
 

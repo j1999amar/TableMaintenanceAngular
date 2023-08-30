@@ -17,28 +17,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 
-const myRouter: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'searchTable',
-    component: SearchtableComponent,
-  },
-  {
-    path: 'addTable',
-    component: AddTableComponent
-  },
-  {
-    path: 'editTable',
-    component: EditTableComponent
-  },
-  {
-    path: 'viewTable',
-    component: ViewTableComponent
-  }
-];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +38,6 @@ const myRouter: Routes = [
     ReactiveFormsModule,
     NgxPaginationModule,
     HttpClientModule,
-    RouterModule.forRoot(myRouter),
   ],
   providers: [],
   bootstrap: [AppComponent],

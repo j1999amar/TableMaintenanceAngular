@@ -31,8 +31,8 @@ export class ApiService {
     return this.http.post(`${environment.apiUrl}/TableMaintenance/AddTable`, data)
   }
 
-  deleteTable(data: any) {
-    return this.http.delete(`${environment.apiUrl}/TableMaintenance/deleteTable/${data}`)
+  deleteTable(data: TableData) {
+    return this.http.delete(`${environment.apiUrl}/TableMaintenance/deleteTable/${data.id}`)
   }
   shareTable(data: TableData) {
     this.sharedData = data

@@ -76,7 +76,8 @@ export class SearchtableComponent implements OnInit {
     this.deleteDeatils = deleteId
   }
 
-  DeleteTable(id: any) {
+  DeleteTable(id:TableData) {
+
     this.api.deleteTable(id).subscribe((response: any) => {
       this.deleteDeatils = '';
       if (response.value = "Deleted") {
@@ -84,8 +85,10 @@ export class SearchtableComponent implements OnInit {
         window.location.href = "/"
       }
     }, error => {
+      console.log(error)
+
       let errorMessage=''
-      errorMessage = 'An error occurred: ' + error.error;
+      errorMessage = 'An error occurred: ' + error.error.value.status;
       alert(errorMessage);
       window.location.href = '/searchTable';
     })

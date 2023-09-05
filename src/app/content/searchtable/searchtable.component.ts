@@ -62,11 +62,12 @@ export class SearchtableComponent implements OnInit {
             (this.data = response), (this.display = 'd-block');
           },
           error => {
+            this.display='d-none'
             let errorMessage=''
-            errorMessage = 'An error occurred: ' + error.error;
+            errorMessage =  error.error;
             alert(errorMessage);
-            this.reactiveForm.reset();
             // window.location.href = '/searchTable';
+
           }
         );
     }
@@ -88,7 +89,7 @@ export class SearchtableComponent implements OnInit {
     }, error => {
       console.log(error)
       let errorMessage=''
-      errorMessage = 'An error occurred: ' + error.error;
+      errorMessage =  error.error;
       alert(errorMessage);
       window.location.href = '/searchTable';
     })

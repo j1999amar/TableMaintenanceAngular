@@ -2,3 +2,6 @@ input[type="radio"]{
     margin-left: 5px;
     margin-top: 5px;
 }
+span{
+    color: red;
+}

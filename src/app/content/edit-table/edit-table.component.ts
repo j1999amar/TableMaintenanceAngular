@@ -57,6 +57,18 @@ export class EditTableComponent {
 
         }
       })
+    }  else {
+      this.markAllFieldsAsTouched(this.addTableForm);
     }
+  }
+
+  markAllFieldsAsTouched(addTableForm: FormGroup) {
+    Object.values(addTableForm.controls).forEach(control => {
+      if (control instanceof FormGroup) {
+        this.markAllFieldsAsTouched(control);
+      } else {
+        control.markAsTouched();
+      }
+    });
   }
 }

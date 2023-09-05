@@ -3,7 +3,7 @@
     <div class="row">
       <form [formGroup]="addTableForm" (ngSubmit)="submitForm()">
         <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="name" class="form-label">Name <span style="color: red;">*</span></label>
+          <label for="name" class="form-label">Name <span>*</span></label>
           <input type="text" name="" id="name" class="form-control" formControlName="Name" />
           <div *ngIf="
               addTableForm.get('Name').invalid &&

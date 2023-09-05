@@ -9,7 +9,7 @@ import { TableData } from '../model/TableData';
   styleUrls: ['./add-table.component.css']
 })
 export class AddTableComponent {
-  tableData:TableData=new TableData;
+  tableData: TableData = new TableData;
   addTableForm: FormGroup;
   constructor(private fb: FormBuilder, private api: ApiService) {
     this.addTableForm = this.fb.group({
@@ -34,12 +34,12 @@ export class AddTableComponent {
   submitForm() {
     console.log(this.addTableForm)
     if (this.addTableForm.valid) {
-      if(this.addTableForm.value.premium){
-        this.tableData=this.addTableForm.value;
-        this.tableData.premium=1;
-      }else{
-        this.tableData=this.addTableForm.value;
-        this.tableData.premium=0;
+      if (this.addTableForm.value.premium) {
+        this.tableData = this.addTableForm.value;
+        this.tableData.premium = 1;
+      } else {
+        this.tableData = this.addTableForm.value;
+        this.tableData.premium = 0;
       }
       this.api.addTable(this.tableData).subscribe((response: any) => {
         if (response.id != "") {
@@ -50,7 +50,7 @@ export class AddTableComponent {
 
         }
       })
-    }else{
+    } else {
       this.markAllFieldsAsTouched(this.addTableForm);
     }
 

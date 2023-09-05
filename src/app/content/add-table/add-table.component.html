@@ -1,20 +1,22 @@
 <div class="container">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="row">
-      <form [formGroup]="addTableForm">
+      <form [formGroup]="addTableForm" (ngSubmit)="submitForm()">
         <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="name" class="form-label">Name</label>
+          <label for="name" class="form-label">Name <span style="color: red;">*</span></label>
           <input type="text" name="" id="name" class="form-control" formControlName="Name" />
           <div *ngIf="
               addTableForm.get('Name').invalid &&
               (addTableForm.get('Name').dirty ||
-                addTableForm.get('Name').touched)
+                addTableForm.get('Name').touched 
+                ) 
+
             " class="text-danger">
             <div *ngIf="addTableForm.get('Name').errors">Name is required.</div>
           </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
-          <label for="type" class="form-label">Type</label><br />
+          <label for="type" class="form-label">Type <span style="color: red;">*</span></label><br />
           <label>
             <input type="radio" id="coverage" formControlName="Type" value="Coverage" [checked]="addTableForm.get('Type').value === 'Coverage'" (click)="onRadioClick($event)" />
             Coverage
@@ -38,8 +40,8 @@
 
           <div *ngIf="
           addTableForm.get('Type').invalid &&
-          (addTableForm.get('Type').dirty ||
-            addTableForm.get('Type').touched)
+          (addTableForm.get('Type').dirty || 
+          addTableForm.get('Type').touched)
         " class="text-danger">
         <div *ngIf="addTableForm.get('Type').errors">Type is required.</div>
       </div>
@@ -58,8 +60,8 @@
           <input type="checkbox" name="premium" id="premium" formControlName="premium" class="mx-1 my-2" />
         </div>
         <div class="col-sm-12 col-md-12 col-lg-6">
-          <input type="submit" class="btn btn-primary form-control" (click)="submitForm()" value="Submit"
-            [disabled]="addTableForm.invalid" />
+          <input type="submit" class="btn btn-primary form-control"  value="Submit"
+             />
         </div>
       </form>
     </div>

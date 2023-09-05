@@ -32,8 +32,8 @@ export class AddTableComponent {
     }
   }
   submitForm() {
+    console.log(this.addTableForm)
     if (this.addTableForm.valid) {
-
       if(this.addTableForm.value.premium){
         this.tableData=this.addTableForm.value;
         this.tableData.premium=1;
@@ -50,7 +50,20 @@ export class AddTableComponent {
 
         }
       })
+    }else{
+      this.markAllFieldsAsTouched(this.addTableForm);
     }
+
+  }
+
+  markAllFieldsAsTouched(addTableForm: FormGroup) {
+    Object.values(addTableForm.controls).forEach(control => {
+      if (control instanceof FormGroup) {
+        this.markAllFieldsAsTouched(control);
+      } else {
+        control.markAsTouched();
+      }
+    });
   }
 
 }
